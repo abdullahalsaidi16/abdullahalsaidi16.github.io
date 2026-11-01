@@ -57,7 +57,7 @@ What a neighboring portfolio could not truthfully copy: shipped MCP tool integra
 
 **Real, verified, usable:**
 - Resume document (Google Doc, source of all factual copy in this record).
-- The Good Scammer — live site `https://thegoodscammer.com/`, GitLab showcase `https://gitlab.com/gitlab-ai-hackathon/transcend-october-2026/5960498/showcase/`, Devpost `https://devpost.com/software/the-good-scammer`. GitLab Transcend Hackathon, October 2026. Co-built.
+- The Good Scammer — live site `https://thegoodscammer.com/`, GitLab showcase `https://gitlab.com/gitlab-ai-hackathon/transcend-october-2026/5960498/showcase/`, Devpost `https://devpost.com/software/the-good-scammer`. GitLab Transcend Hackathon, October 2026. The resume document says "Co-built"; Abdullah corrected this on 2026-11-01 — it is his own project and must not carry a co-build attribution.
 - FUSION (Wildfire Prevention Prioritisation) — live site `https://abdullahalsaidi16.github.io/grootguard/`, repo `https://github.com/abdullahalsaidi16/grootguard`. HackBarna 2026.
 - Maskode — repo `https://github.com/abdullahalsaidi16/maskode`. Open-source fork of the OpenCode AI coding agent.
 - Concrete figures stated on the resume: 14,002 hexagonal cells covering Spain; five fused public datasets; 523 weeks of ERA5 weather; 287k population cells aggregated; 80 m COG sampling; 280 Overpass API requests reduced to 30.
