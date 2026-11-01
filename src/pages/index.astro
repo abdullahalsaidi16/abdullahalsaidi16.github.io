@@ -1,0 +1,165 @@
+---
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/terminal.css';
+import { identity, roles, artifacts, config } from '../data/profile';
+
+const { name, title, host, program, task, summary, email, links, call } = identity;
+const description =
+  'Abdullah Alsaidi — senior software engineer in Barcelona. 8+ years of backend systems and production AI: agentic workflows, MCP tool integrations, vector search and RAG at Revolut.';
+const canonical = 'https://abdullahalsaidi16.github.io/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{name} — Senior Software Engineer, AI & Backend Systems</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0b0d0e" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={`${name} — Senior Software Engineer, AI & Backend Systems`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+
+  <body>
+    <main class="win">
+      <header class="bar">
+        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <p>{host} — {program}</p>
+      </header>
+
+      <div class="run">
+        <div class="boot">
+          <p class="cmd">
+            <span class="p">$</span> <b>agent</b> run --task <span class="s">"{task}"</span>
+          </p>
+
+          <h1 class="name">{name}<span class="cursor" aria-hidden="true"></span></h1>
+
+          <p class="title">{title}</p>
+
+          <p class="prose">{summary.join(' ')}</p>
+
+          <p class="contact">
+            <span class="mail"
+              >{email}<button class="copy" type="button" data-email={email}>copy</button></span
+            >
+            {links.map((l) => <a href={l.href} rel="me noopener">{l.label}</a>)}
+            <a class="go" href={call.href} rel="noopener">{call.label} →</a>
+          </p>
+        </div>
+
+        <h2 class="label" id="experience">// tool calls · experience</h2>
+
+        <ol class="calls">
+          {
+            roles.map((r) => (
+              <li class="call" data-running={r.running ? '' : undefined}>
+                <span class="dot" aria-hidden="true" />
+                <div>
+                  <p class="sig">
+                    <span class="fn">work</span><span class="pn">(</span><span class="str">"{r.company}"</span
+                    ><span class="pn">, role=</span><span class="str">"{r.role}"</span
+                    ><span class="pn">)</span>
+                    <span class="meta">
+                      {r.from} → {r.to} · {r.where}
+                    </span>
+                  </p>
+                  <ul class="res">
+                    {r.results.map((x) => (
+                      <li>{x}</li>
+                    ))}
+                  </ul>
+                  <p class="ret">
+                    {r.running ? (
+                      <>
+                        <span class="pip" aria-hidden="true" />
+                        running
+                      </>
+                    ) : (
+                      <>✓ 200 OK</>
+                    )}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+
+        <h2 class="label" id="projects">// artifacts · recent projects</h2>
+
+        <div class="arts">
+          {
+            artifacts.map((a) => (
+              <article class="art">
+                <h3>{a.name}</h3>
+                <p class="ctx">{a.context}</p>
+                <p>{a.blurb}</p>
+                <p class="chips">
+                  {a.stack.map((s) => (
+                    <span class="chip">{s}</span>
+                  ))}
+                </p>
+                <p class="out">
+                  <a href={a.link.href} rel="noopener">
+                    {a.link.label} <span class="ar">→</span>
+                  </a>
+                  {a.alt && (
+                    <a href={a.alt.href} rel="noopener">
+                      {a.alt.label} <span class="ar">→</span>
+                    </a>
+                  )}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        <h2 class="label" id="stack">// config · stack.yaml</h2>
+
+        <div class="yaml">
+          {
+            config.map((c) => (
+              <div>
+                <span class="yk">{c.key}</span><span class="yp">:</span>{' '}
+                <span class="yp">{c.map ? '{' : '['}</span><span class="yv">{c.value}</span>
+                <span class="yp">{c.map ? '}' : ']'}</span>
+              </div>
+            ))
+          }
+        </div>
+
+        <p class="exit">
+          <span><span class="yp">$</span> <b>exit</b> 0</span>
+          <span class="yp">·</span>
+          <a href={call.href} rel="noopener">{call.label} <span class="ar">→</span></a>
+        </p>
+      </div>
+    </main>
+
+    <script>
+      const btn = document.querySelector<HTMLButtonElement>('.copy');
+      btn?.addEventListener('click', async () => {
+        const address = btn.dataset.email;
+        if (!address) return;
+        try {
+          await navigator.clipboard.writeText(address);
+          btn.textContent = 'copied';
+          btn.dataset.done = '1';
+        } catch {
+          btn.textContent = 'press ⌘C';
+        }
+        setTimeout(() => {
+          btn.textContent = 'copy';
+          delete btn.dataset.done;
+        }, 2200);
+      });
+    </script>
+  </body>
+</html>

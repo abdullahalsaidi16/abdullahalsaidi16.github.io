@@ -1,0 +1,24 @@
+# build
+node_modules/
+dist/
+.astro/
+
+# os / editor
+.DS_Store
+npm-debug.log*
+.env
+.env.production
+
+# local agent tooling (vendored skills, local settings) — not part of the site
+.agent/
+.agents/
+.claude/
+.codex/
+.gemini/
+.opencode/
+
+# impeccable working files — the surface brief is kept, the rest is session scratch
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/config.local.json
