@@ -109,7 +109,7 @@ export type Artifact = {
 export const artifacts: Artifact[] = [
   {
     name: 'The Good Scammer',
-    context: 'GitLab Transcend Hackathon · Oct 2026',
+    context: 'GitLab Transcend Hackathon · Oct 2026 · co-built',
     blurb:
       'Trains elderly people to spot phone fraud through consented AI mock scam calls, then gives the family a debrief. Consent is one state machine, and only the category of disclosed data is stored.',
     stack: ['FastAPI', 'Twilio SIP', 'React 19', 'Cloud Run'],

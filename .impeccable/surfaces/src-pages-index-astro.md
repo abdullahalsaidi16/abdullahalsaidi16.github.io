@@ -7,7 +7,7 @@ related_targets: []
 
 ## Direction contract
 
-**THESIS:** The CV is the trace of an agent run. One command — `agent run --task "introduce yourself"` — and everything below is its output: roles are tool calls that returned `200 OK`, projects are the artifacts the run produced, the stack is its config. It refuses the centred headline over a row of three equal project cards, and it refuses the timeline.
+**THESIS:** The CV is the trace of an agent run. One command — `agent run --task "introduce yourself"` — and everything below is its output: roles are tool calls that returned `200 OK`, projects are the artifacts the run produced, the stack is its config. It refuses the centred headline, the hero-metric template and the timeline. The artifacts region is the run's output listing and keeps the pinned reference's own form — three hairline-ruled columns, not run-grammar signatures — which is a deliberate limit on how far the conceit reaches.
 
 **OWN-WORLD:** One terminal window on a near-black page; no second container anywhere. One mono family at one size for body — hierarchy comes from weight and colour alone, never from a new face. Page `#0b0d0e`, window `#141617`, hairlines `#ffffff14`, body `#c6cdcc`, dim `#7c8784`; green `#5ddc92` carries identity, success and every action, amber `#e8b06a` carries strings and the title line, magenta `#f2789f` names artifacts, blue `#7cb8f0` names config keys. Components: traffic-light window bar, `$` prompt lines, `↳` result bullets, hollow/filled status dots, `✓ 200 OK` returns, hairline tech chips, `→` links. No shadowed cards, no gradients, no emoji.
 

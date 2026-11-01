@@ -23,7 +23,11 @@ const canonical = 'https://abdullahalsaidi16.github.io/';
     <meta property="og:title" content={`${name} — Senior Software Engineer, AI & Backend Systems`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={`${canonical}og.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A terminal window titled abdullah@barcelona — agent.run, printing the name Abdullah Alsaidi and the line Senior Software Engineer, AI and Backend Systems, Barcelona." />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="generator" content={Astro.generator} />
   </head>
 
@@ -48,7 +52,7 @@ const canonical = 'https://abdullahalsaidi16.github.io/';
 
           <p class="contact">
             <span class="mail"
-              >{email}<button class="copy" type="button" data-email={email}>copy</button></span
+              >{email}<button class="copy" type="button" data-email={email} aria-live="polite">copy</button></span
             >
             {links.map((l) => <a href={l.href} rel="me noopener">{l.label}</a>)}
             <a class="go" href={call.href} rel="noopener">{call.label} →</a>
@@ -107,11 +111,11 @@ const canonical = 'https://abdullahalsaidi16.github.io/';
                   ))}
                 </p>
                 <p class="out">
-                  <a href={a.link.href} rel="noopener">
+                  <a href={a.link.href} rel="noopener" aria-label={`${a.name} — ${a.link.label}`}>
                     {a.link.label} <span class="ar">→</span>
                   </a>
                   {a.alt && (
-                    <a href={a.alt.href} rel="noopener">
+                    <a href={a.alt.href} rel="noopener" aria-label={`${a.name} — ${a.alt.label}`}>
                       {a.alt.label} <span class="ar">→</span>
                     </a>
                   )}
@@ -153,7 +157,17 @@ const canonical = 'https://abdullahalsaidi16.github.io/';
           btn.textContent = 'copied';
           btn.dataset.done = '1';
         } catch {
-          btn.textContent = 'press ⌘C';
+          // No clipboard access — select the address so the reader can copy it.
+          const host = btn.closest('.mail');
+          const range = document.createRange();
+          if (host?.firstChild) {
+            range.setStart(host.firstChild, 0);
+            range.setEnd(host.firstChild, address.length);
+            const sel = window.getSelection();
+            sel?.removeAllRanges();
+            sel?.addRange(range);
+          }
+          btn.textContent = 'selected';
         }
         setTimeout(() => {
           btn.textContent = 'copy';
