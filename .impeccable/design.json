@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T00:00:00Z",
+  "title": "Design System: Agent Trace",
+  "extensions": {
+    "colorMeta": {
+      "page": { "role": "neutral", "displayName": "Trace Ground", "canonical": "#0b0d0e", "tonalRamp": ["#0b0d0e", "#141617", "#1b1e1f", "#2b3130", "#4a514f", "#7c8784", "#c9d1d0", "#e8eeec"] },
+      "window": { "role": "neutral", "displayName": "Window Ground", "canonical": "#141617", "tonalRamp": ["#0b0d0e", "#141617", "#1b1e1f", "#2b3130", "#4a514f", "#7c8784", "#c9d1d0", "#e8eeec"] },
+      "bar": { "role": "neutral", "displayName": "Bar Ground", "canonical": "#1b1e1f", "tonalRamp": ["#0b0d0e", "#141617", "#1b1e1f", "#2b3130", "#4a514f", "#7c8784", "#c9d1d0", "#e8eeec"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "#ffffff14", "tonalRamp": ["#ffffff08", "#ffffff0d", "#ffffff14", "#ffffff1f", "#ffffff26", "#ffffff2e", "#ffffff3d", "#ffffff52"] },
+      "hairline-soft": { "role": "neutral", "displayName": "Hairline Soft", "canonical": "#ffffff0d", "tonalRamp": ["#ffffff05", "#ffffff08", "#ffffff0d", "#ffffff14", "#ffffff1f", "#ffffff26", "#ffffff2e", "#ffffff3d"] },
+      "fg": { "role": "neutral", "displayName": "Output Grey", "canonical": "#c9d1d0", "contrastOnWindow": "11.68:1", "tonalRamp": ["#1b1f1e", "#2b3130", "#3f4645", "#555d5b", "#6d7675", "#949c9b", "#c9d1d0", "#eef2f1"] },
+      "fg-bright": { "role": "neutral", "displayName": "Output Bright", "canonical": "#e8eeec", "tonalRamp": ["#1d211f", "#2d3331", "#424947", "#58605e", "#717a77", "#9aa3a0", "#c9d1d0", "#e8eeec"] },
+      "dim": { "role": "neutral", "displayName": "Comment Dim", "canonical": "#7c8784", "contrastOnWindow": "4.89:1", "tonalRamp": ["#171a19", "#242827", "#343a38", "#49514f", "#616b68", "#7c8784", "#a7b0ae", "#d6dbda"] },
+      "green": { "role": "primary", "displayName": "Signal Green", "canonical": "#5ddc92", "contrastOnWindow": "10.47:1", "tonalRamp": ["#0c2318", "#123a26", "#1a5737", "#23744a", "#2f7d55", "#45b878", "#5ddc92", "#b3f0cd"] },
+      "green-deep": { "role": "primary", "displayName": "Deep Green", "canonical": "#2f7d55", "tonalRamp": ["#0c2318", "#123a26", "#1a5737", "#23744a", "#2f7d55", "#45b878", "#5ddc92", "#b3f0cd"] },
+      "amber": { "role": "secondary", "displayName": "String Amber", "canonical": "#e8b06a", "contrastOnWindow": "9.38:1", "tonalRamp": ["#2a1c08", "#43300f", "#60471a", "#815f24", "#a67a31", "#c9954b", "#e8b06a", "#f5dcb6"] },
+      "magenta": { "role": "tertiary", "displayName": "Artifact Magenta", "canonical": "#f2789f", "contrastOnWindow": "6.88:1", "tonalRamp": ["#2d0d18", "#471426", "#671f37", "#8a2b4b", "#ad3b61", "#d0557f", "#f2789f", "#fac2d4"] },
+      "blue": { "role": "tertiary", "displayName": "Config Blue", "canonical": "#7cb8f0", "contrastOnWindow": "8.62:1", "tonalRamp": ["#0c1a2a", "#122a44", "#1a3d63", "#235285", "#3169a6", "#4f8ec9", "#7cb8f0", "#c5def7"] },
+      "light-red": { "role": "neutral", "displayName": "Chrome Light Red", "canonical": "#ef6a5e", "tonalRamp": ["#2d100d", "#471a15", "#67251f", "#8a332a", "#ad4538", "#d05749", "#ef6a5e", "#f8b8b1"] },
+      "light-amber": { "role": "neutral", "displayName": "Chrome Light Amber", "canonical": "#f0bd3f", "tonalRamp": ["#2d2206", "#47350b", "#674c13", "#8a661c", "#ad8126", "#d09e31", "#f0bd3f", "#f9e4a4"] },
+      "light-green": { "role": "neutral", "displayName": "Chrome Light Green", "canonical": "#4fd065", "tonalRamp": ["#0c230f", "#123a19", "#1a5724", "#237430", "#2f973e", "#3eb550", "#4fd065", "#aeeeba"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name only, once, as the run's first output. A blinking green block cursor sits against its final character." },
+      "body": { "displayName": "Body", "purpose": "All prose and output: summary at 68ch, result lines, artifact copy, command line, title line, config block, exit line. Steps to 13.5px at <=780px." },
+      "meta": { "displayName": "Meta", "purpose": "Window bar title, date/location suffixes, return status, chips, copy control, artifact context. Steps to 11.5px at <=780px." },
+      "label": { "displayName": "Label", "purpose": "The three '// ...' section labels, uppercased by CSS and trailed by a dotted hairline. Tracking loosens to 0.13em at <=780px." }
+    },
+    "shadows": [
+      { "name": "running-halo", "value": "0 0 0 4px #5ddc9221", "purpose": "Zero-offset green ring on the single filled status dot marking the running role. The only box-shadow in the build; state, not elevation." },
+      { "name": "running-halo-breathe", "value": "0 0 0 7px #5ddc9210", "purpose": "The expanded half of the 2.4s breathe keyframe on the running halo." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "The one easing curve. Exponential ease-out, used by emerge and the arrow nudge." },
+      { "name": "emerge", "value": "emerge .42s cubic-bezier(.16,1,.3,1) backwards", "purpose": "The single authored moment: the run printing itself. opacity 0->1, 7px rise, 3px blur clearing, across the five first-viewport children." },
+      { "name": "emerge-stagger", "value": "0s, .06s, .11s, .16s, .21s", "purpose": "Per-child delay on .boot children; max delay 0.21s." },
+      { "name": "blink", "value": "blink 1.15s steps(1,end) .5s infinite", "purpose": "The green block cursor against the name." },
+      { "name": "breathe", "value": "breathe 2.4s ease-in-out 1s infinite", "purpose": "The running status dot's halo expanding and fading." },
+      { "name": "state-transition", "value": "color .18s, border-color .18s", "purpose": "Every hover and state change on links, the copy control, and chips." },
+      { "name": "arrow-nudge", "value": "translate .22s cubic-bezier(.16,1,.3,1)", "purpose": "3px horizontal nudge on a link's trailing arrow glyph on hover." },
+      { "name": "reduced-motion-gate", "value": "@media (prefers-reduced-motion: no-preference)", "purpose": "All keyframe animation is gated here. The un-animated page is the complete default state." }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "780px" }
+    ],
+    "browserSurfaces": [
+      { "name": "color-scheme", "value": "dark" },
+      { "name": "selection", "value": "background:#2f7d55; color:#fff" },
+      { "name": "scrollbar-color", "value": "#2b3130 #0b0d0e" },
+      { "name": "focus-visible", "value": "outline:2px solid #5ddc92; outline-offset:3px; border-radius:2px" },
+      { "name": "font-variant-numeric", "value": "tabular-nums" },
+      { "name": "theme-color", "value": "#0b0d0e" }
+    ],
+    "contentModel": {
+      "source": "src/data/profile.ts",
+      "rule": "Everything the page says lives in one data module; the markup is generic over it. Adding a role, an artifact, or a config line is one edit in that file and no markup change."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Action (Bracketed)",
+      "kind": "button",
+      "refersTo": "action-bracketed",
+      "description": "The one action on the page. Green text framed by dim brackets with a trailing arrow; appears in the contact row and again on the exit line.",
+      "html": "<a class=\"ds-go\" href=\"#\">book a call <span class=\"ds-go-ar\">→</span></a>",
+      "css": ".ds-go { font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 15px; line-height: 1.75; color: #5ddc92; text-decoration: none; white-space: nowrap; border-bottom: 1px solid transparent; transition: color .18s, border-color .18s; } .ds-go::before { content: '[ '; color: #7c8784; } .ds-go::after { content: ' ]'; color: #7c8784; } .ds-go:hover::before, .ds-go:hover::after { color: #5ddc92; } .ds-go-ar { display: inline-block; transition: translate .22s cubic-bezier(.16,1,.3,1); } .ds-go:hover .ds-go-ar { translate: 3px 0; } .ds-go:focus-visible { outline: 2px solid #5ddc92; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Contact Link (Secondary)",
+      "kind": "nav",
+      "refersTo": "action-bracketed",
+      "description": "Secondary actions in the contact row. Grey at rest, green with an underline on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">gh/abdullahalsaidi16</a>",
+      "css": ".ds-link { font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 15px; line-height: 1.75; color: #c9d1d0; text-decoration: none; border-bottom: 1px solid transparent; transition: color .18s, border-color .18s; } .ds-link:hover { color: #5ddc92; border-bottom-color: #5ddc92; } .ds-link:focus-visible { outline: 2px solid #5ddc92; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Copy Control",
+      "kind": "input",
+      "refersTo": "copy-control",
+      "description": "The page's only form element: copies the email address, flipping to a green 'copied' state for 2.2s.",
+      "html": "<span class=\"ds-mail\">abdullah.alsaidi16@gmail.com<button class=\"ds-copy\" type=\"button\">copy</button></span>",
+      "css": ".ds-mail { font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 15px; line-height: 1.75; color: #c9d1d0; overflow-wrap: anywhere; } .ds-copy { font-family: inherit; font-size: 12.5px; color: #7c8784; background: transparent; border: 1px solid #ffffff14; border-radius: 4px; padding: 1px 7px; margin-left: 8px; cursor: pointer; transition: color .18s, border-color .18s; } .ds-copy:hover { color: #c9d1d0; border-color: #ffffff2e; } .ds-copy[data-done='1'] { color: #5ddc92; border-color: #2f7d55; } .ds-copy:focus-visible { outline: 2px solid #5ddc92; outline-offset: 3px; }"
+    },
+    {
+      "name": "Stack Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Static hairline tag naming one item of an artifact's stack. Never interactive.",
+      "html": "<span class=\"ds-chip\">Python</span><span class=\"ds-chip\">FastAPI</span><span class=\"ds-chip\">pgvector</span>",
+      "css": ".ds-chip { display: inline-block; font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 12.5px; line-height: 1.75; color: #7c8784; border: 1px solid #ffffff14; border-radius: 4px; padding: 2px 8px; margin-right: 6px; }"
+    },
+    {
+      "name": "Terminal Window",
+      "kind": "card",
+      "refersTo": "window",
+      "description": "The single container. Chrome bar with three stateless lights and a user@host title, over the run body.",
+      "html": "<div class=\"ds-win\"><div class=\"ds-bar\"><span class=\"ds-lights\"><i></i><i></i><i></i></span><p>abdullah@barcelona — agent.run</p></div><div class=\"ds-run\"><p class=\"ds-cmd\"><span class=\"ds-p\">$</span> <b>agent</b> run --task <span class=\"ds-s\">\"introduce yourself\"</span></p></div></div>",
+      "css": ".ds-win { max-width: 952px; margin: 0 auto; background: #141617; border: 1px solid #ffffff14; border-radius: 11px; overflow: hidden; font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; } .ds-bar { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #1b1e1f; border-bottom: 1px solid #ffffff14; } .ds-bar p { margin: 0; color: #7c8784; font-size: 12.5px; letter-spacing: .01em; } .ds-lights { display: flex; gap: 8px; flex: 0 0 auto; } .ds-lights i { width: 11px; height: 11px; border-radius: 50%; display: block; } .ds-lights i:nth-child(1) { background: #ef6a5e; } .ds-lights i:nth-child(2) { background: #f0bd3f; } .ds-lights i:nth-child(3) { background: #4fd065; } .ds-run { padding: 28px 24px 32px; } .ds-cmd { margin: 0; color: #7c8784; font-size: 15px; line-height: 1.75; } .ds-cmd b { color: #5ddc92; font-weight: 700; } .ds-cmd .ds-s { color: #c9d1d0; }"
+    },
+    {
+      "name": "Tool Call Entry",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The signature component: one role rendered as a completed or running tool call, with status dot, work(...) signature, result list and return line.",
+      "html": "<ol class=\"ds-calls\"><li class=\"ds-call\" data-running><span class=\"ds-dot\"></span><div><p class=\"ds-sig\"><span class=\"ds-fn\">work</span><span class=\"ds-pn\">(</span><span class=\"ds-str\">\"Revolut\"</span><span class=\"ds-pn\">, role=</span><span class=\"ds-str\">\"Software Engineer\"</span><span class=\"ds-pn\">)</span><span class=\"ds-meta\">Jul 2024 → now · Barcelona</span></p><ul class=\"ds-res\"><li>Delivered an internal AI assistant end to end, with MCP tool integrations</li><li>LLM-powered workflows built with PMs and data scientists</li></ul><p class=\"ds-ret\"><span class=\"ds-pip\"></span>running</p></div></li><li class=\"ds-call\"><span class=\"ds-dot\"></span><div><p class=\"ds-sig\"><span class=\"ds-fn\">work</span><span class=\"ds-pn\">(</span><span class=\"ds-str\">\"Glovo\"</span><span class=\"ds-pn\">, role=</span><span class=\"ds-str\">\"Software Engineer\"</span><span class=\"ds-pn\">)</span><span class=\"ds-meta\">Nov 2022 → Jul 2024 · Barcelona</span></p><ul class=\"ds-res\"><li>Core communication services on microservices and Kafka</li></ul><p class=\"ds-ret\">✓ 200 OK</p></div></li></ol>",
+      "css": ".ds-calls { display: grid; gap: 29px; margin: 0; padding: 0; list-style: none; font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 15px; } .ds-call { display: grid; grid-template-columns: 22px minmax(0,1fr); column-gap: 4px; } .ds-dot { width: 11px; height: 11px; border-radius: 50%; margin-top: .62em; border: 1.5px solid #2f7d55; } .ds-call[data-running] .ds-dot { background: #5ddc92; border-color: #5ddc92; box-shadow: 0 0 0 4px #5ddc9221; animation: ds-breathe 2.4s ease-in-out 1s infinite; } .ds-sig { margin: 0; line-height: 1.7; overflow-wrap: break-word; color: #c9d1d0; } .ds-fn { color: #5ddc92; font-weight: 700; } .ds-pn { color: #7c8784; } .ds-str { color: #e8b06a; } .ds-meta { color: #7c8784; font-size: 12.5px; margin-left: .6ch; } .ds-res { margin: 6px 0 0; padding: 0; display: grid; gap: 3px; list-style: none; } .ds-res li { display: grid; grid-template-columns: 2.2ch minmax(0,1fr); color: #c9d1d0; line-height: 1.68; } .ds-res li::before { content: '↳'; color: #7c8784; } .ds-ret { margin: 9px 0 0; font-size: 12.5px; color: #5ddc92; display: flex; align-items: center; gap: 7px; } .ds-pip { width: 7px; height: 7px; border-radius: 50%; background: #5ddc92; display: block; } @keyframes ds-breathe { 0%,100% { box-shadow: 0 0 0 4px #5ddc9221; } 50% { box-shadow: 0 0 0 7px #5ddc9210; } }"
+    },
+    {
+      "name": "Section Label",
+      "kind": "custom",
+      "refersTo": "section-label",
+      "description": "The only structural divider between regions: a dim uppercase comment label trailed by a dotted rule filling the remaining width.",
+      "html": "<h2 class=\"ds-label\">// artifacts · recent projects</h2>",
+      "css": ".ds-label { display: flex; align-items: center; gap: 16px; margin: 46px 0 20px; font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-weight: 400; color: #7c8784; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; } .ds-label::after { content: ''; flex: 1 1 auto; min-width: 20px; border-top: 1px dotted #ffffff26; }"
+    },
+    {
+      "name": "Artifacts Grid",
+      "kind": "card",
+      "refersTo": "artifact-card",
+      "description": "Three hairline-ruled columns listing the run's output artifacts. Cells, not cards: no fill, no radius, no shadow.",
+      "html": "<div class=\"ds-arts\"><article class=\"ds-art\"><h3>Maskode</h3><p class=\"ds-ctx\">open source · privacy filter</p><p>A local open-weight model strips PII before any prompt reaches an LLM provider.</p><p class=\"ds-chips\"><span class=\"ds-chip2\">Python</span><span class=\"ds-chip2\">transformers</span></p><p class=\"ds-out\"><a href=\"#\">repo <span class=\"ds-ar\">→</span></a><a href=\"#\">docs <span class=\"ds-ar\">→</span></a></p></article><article class=\"ds-art\"><h3>Fieldline</h3><p class=\"ds-ctx\">client work · geospatial</p><p>Satellite-imagery field-boundary and vegetation-detection APIs.</p><p class=\"ds-chips\"><span class=\"ds-chip2\">FastAPI</span><span class=\"ds-chip2\">GDAL</span></p><p class=\"ds-out\"><a href=\"#\">live <span class=\"ds-ar\">→</span></a></p></article></div>",
+      "css": ".ds-arts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid #ffffff14; font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 15px; } .ds-art { display: flex; flex-direction: column; padding: 20px 22px 22px; border-left: 1px solid #ffffff14; } .ds-art:first-child { border-left: 0; padding-left: 0; } .ds-art:last-child { padding-right: 0; } .ds-art h3 { margin: 0; color: #f2789f; font-weight: 700; font-size: 15px; letter-spacing: -.005em; } .ds-ctx { margin: 2px 0 0; color: #7c8784; font-size: 12.5px; } .ds-art p { color: #c9d1d0; line-height: 1.72; } .ds-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; } .ds-chip2 { border: 1px solid #ffffff14; border-radius: 4px; padding: 2px 8px; font-size: 12.5px; color: #7c8784; } .ds-out { display: flex; gap: 18px; margin-top: auto; padding-top: 18px; } .ds-out a { color: #5ddc92; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .18s; } .ds-out a:hover { border-bottom-color: #5ddc92; } .ds-ar { display: inline-block; transition: translate .22s cubic-bezier(.16,1,.3,1); } .ds-out a:hover .ds-ar { translate: 3px 0; } @media (max-width: 780px) { .ds-arts { grid-template-columns: minmax(0,1fr); } .ds-art { border-left: 0; border-top: 1px solid #ffffff14; padding: 18px 0; } .ds-art:first-child { border-top: 0; padding-top: 18px; } }"
+    },
+    {
+      "name": "Config Block",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The run's stack.yaml: blue keys, amber values, dim delimiters. Scrolls horizontally on wide screens, wraps with a 2ch hanging indent under 780px.",
+      "html": "<div class=\"ds-yaml\"><div><span class=\"ds-yk\">languages</span><span class=\"ds-yp\">:</span> <span class=\"ds-yp\">[</span><span class=\"ds-yv\">Python, Java, TypeScript, Go</span><span class=\"ds-yp\">]</span></div><div><span class=\"ds-yk\">ai</span><span class=\"ds-yp\">:</span> <span class=\"ds-yp\">{</span><span class=\"ds-yv\">MCP, RAG, vector search, agentic workflows</span><span class=\"ds-yp\">}</span></div></div>",
+      "css": ".ds-yaml { display: grid; gap: 1px; overflow-x: auto; font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 15px; line-height: 1.75; } .ds-yaml div { white-space: nowrap; } .ds-yk { color: #7cb8f0; } .ds-yv { color: #e8b06a; } .ds-yp { color: #7c8784; } @media (max-width: 780px) { .ds-yaml { overflow-x: visible; } .ds-yaml div { white-space: normal; padding-left: 2ch; text-indent: -2ch; } }"
+    },
+    {
+      "name": "Name with Cursor",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The display role, used once: the name as the run's first output with a blinking green block cursor hard against its final character.",
+      "html": "<h1 class=\"ds-name\">Abdullah Alsaidi<span class=\"ds-cursor\"></span></h1><p class=\"ds-title\">Senior Software Engineer · AI &amp; Backend Systems · Barcelona</p>",
+      "css": ".ds-name { margin: 14px 0 0; font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: clamp(31px,6.6vw,64px); font-weight: 700; line-height: 1.12; letter-spacing: -.012em; color: #e8eeec; display: flex; align-items: center; flex-wrap: wrap; } .ds-cursor { display: inline-block; width: .56em; height: .9em; background: #5ddc92; translate: 0 .07em; } @media (prefers-reduced-motion: no-preference) { .ds-cursor { animation: ds-blink 1.15s steps(1,end) .5s infinite; } } @keyframes ds-blink { 0%,55% { opacity: 1; } 56%,100% { opacity: 0; } } .ds-title { margin: 2px 0 0; font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 15px; line-height: 1.75; color: #e8b06a; letter-spacing: .01em; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Agent Trace",
+    "overview": "The page is one terminal window on a near-black ground, and everything inside it is the printed output of a single command. The CV is not described as an agent run; it is one. Roles are tool calls that returned ✓ 200 OK, projects are the artifacts the run produced, the stack is its config block, and the page ends at $ exit 0. The register is the category's familiar terminal look, taken deliberately and executed at full fidelity — no irony, no smuggled quirk, no hedge toward a safer look. It is a user-pinned world supplied as a finished reference artifact, and it is the committed system.\n\nDensity is high and even. One monospace family does all the work at three sizes; hierarchy is carried by weight and colour, so the page reads as a continuous transcript rather than a stack of designed blocks. There is exactly one container — the window — and nothing nests inside it. Surfaces are flat; separation is done with hairlines at 8% white and with the two-step tonal lift from page to window to bar. Colour is semantic rather than decorative: a reader who learns that green means action and amber means string can predict every subsequent use.\n\nThe world refuses the centred headline, the hero metric, the timeline, and the shadowed card. Its one authored motion is the run printing itself — a short staggered emerge across the first-viewport children — plus the cursor blink and the single breathing status dot. Everything else is still.",
+    "keyCharacteristics": [
+      "One window, one family, one accent vocabulary; no second container anywhere.",
+      "Three type roles only — display, body, meta — with weight and colour carrying hierarchy.",
+      "Semantic colour: green = identity/success/action, amber = strings, magenta = artifact names, blue = config keys, dim = comments and meta.",
+      "Flat surfaces, hairline rules, tonal layering instead of shadows.",
+      "One authored motion moment, behind prefers-reduced-motion: no-preference; the default state is fully visible.",
+      "Content-driven markup: everything the page says comes from one data module."
+    ],
+    "rules": [
+      { "name": "The Semantic Colour Rule", "body": "Every accent is bound to a meaning, not a position. Green is identity, success and action; amber is a string; magenta is an artifact name; blue is a config key; dim is a comment. A new element inherits the colour its meaning already owns, and never takes an accent for emphasis alone.", "section": "colors" },
+      { "name": "The One Green Action Rule", "body": "Green is the only actionable colour. There is no second accent for secondary actions and no coloured hover state outside green. Secondary actions stay Output Grey and earn green on hover.", "section": "colors" },
+      { "name": "The Dim Floor Rule", "body": "Comment Dim at 4.89:1 is the floor for text on the window ground. Nothing on this page is set lighter or lower than it, and no new tier is introduced below it.", "section": "colors" },
+      { "name": "The Three Roles Rule", "body": "The page has exactly three sizes — display, body, meta — and one family. A new element picks one of the three; it does not get a size between them, a fourth step, or a second face. Hierarchy is produced by weight (400/700) and by semantic colour, never by a new size.", "section": "typography" },
+      { "name": "The Tabular Rule", "body": "font-variant-numeric: tabular-nums is global. Dates, versions and counts align in a monospaced column without per-element opt-in, and nothing turns it off.", "section": "typography" },
+      { "name": "The Single Container Rule", "body": "There is one window and nothing nests inside it. New regions are separated by hairlines, section labels and rhythm — never by a second panel, card, or inset surface.", "section": "layout" },
+      { "name": "The Step Rhythm Rule", "body": "All block-level vertical space is a multiple of --step. A new section gets step × 2.1 above its label and step × 0.9 below it.", "section": "layout" },
+      { "name": "The No-Lift Rule", "body": "Nothing on this page is lifted. No offset shadow, no gradient, no blur-based elevation. The only shadow permitted is a zero-offset accent ring expressing live state.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the three type roles only — display clamp(31px,6.6vw,64px), body 15px, meta 12.5px — in the one JetBrains Mono Variable family, and carry all hierarchy with weight (400/700) and semantic colour.",
+      "Do bind every accent to its meaning: green for identity/success/action, amber for strings, magenta for artifact names, blue for config keys, dim for comments and meta.",
+      "Do keep all block spacing on multiples of --step (22px; 18px at <=780px).",
+      "Do separate regions with hairlines (#ffffff14), // ... section labels and rhythm.",
+      "Do let the one data module drive the page: adding a role, an artifact or a config line is one edit in src/data/profile.ts, and the markup stays generic over it.",
+      "Do put new motion behind prefers-reduced-motion: no-preference and make the un-animated state the complete one.",
+      "Do keep the whole page on one breakpoint at 780px.",
+      "Do theme browser surfaces from the palette: color-scheme: dark, ::selection in Deep Green, scrollbar-color: #2b3130 on the page ground, and a 2px Signal Green :focus-visible ring at 3px offset."
+    ],
+    "donts": [
+      "Don't add a second type face, a fourth size step, or a weight between 400 and 700.",
+      "Don't nest a second container, card, panel or inset surface inside the window.",
+      "Don't add an offset drop shadow or a gradient. The only permitted shadow is a zero-offset accent ring expressing live state.",
+      "Don't introduce a second actionable colour or a non-green hover state.",
+      "Don't use an accent for emphasis alone, or reuse magenta or blue outside artifact names and config keys.",
+      "Don't set text below Comment Dim's 4.89:1 on the window ground.",
+      "Don't add emoji, or raster/decorative imagery inside the window.",
+      "Don't hard-code copy into the markup when it belongs in the data module."
+    ]
+  }
+}
